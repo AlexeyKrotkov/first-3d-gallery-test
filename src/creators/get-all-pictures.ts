@@ -1,4 +1,3 @@
-import { Picture } from '../elements/picture';
 import {
     fetchPhotoSizedByPhotoId,
     fetchUserFlickrPhotos,
@@ -23,7 +22,7 @@ export const getAllPictures = (): Promise<any> =>
                 );
                 const neededSizes = allPhotosSizes.map(photoSizes => {
                     const found = photoSizes.find(
-                        (phS: any) => phS.label === 'Medium',
+                        (phS: any) => phS.label === 'Large',
                     );
                     return found;
                 });
@@ -32,18 +31,3 @@ export const getAllPictures = (): Promise<any> =>
         });
     });
 
-type PositionPair = [number, number];
-
-// export const makePositionsMap = (count: number) => {
-//     const results: [PositionPair] = [];
-//     range(count).forEach(number => {
-//
-//     })
-// };
-
-export const settingPictures = (pictures: [Picture]): void => {
-    const positionsMap = {};
-    pictures.forEach((picture: Picture) => {
-        // picture.mesh.position.set();
-    });
-};

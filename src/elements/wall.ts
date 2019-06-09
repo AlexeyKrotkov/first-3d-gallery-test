@@ -10,11 +10,12 @@ export class Wall {
         const texture = new THREE.TextureLoader().load(WallImg);
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
-        texture.repeat.set( 20, 20 );
-        this.geometry = new THREE.PlaneGeometry(50, 50, 10, 10);
+        texture.repeat.set( 200, 20 );
+        this.geometry = new THREE.PlaneGeometry(500, 50, 1, 1);
         this.material = new THREE.MeshPhongMaterial({
             map: texture,
         });
         this.mesh = new THREE.Mesh(this.geometry, this.material);
+        this.mesh.receiveShadow = true;
     }
 }

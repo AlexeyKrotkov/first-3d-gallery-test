@@ -5,11 +5,13 @@ import { Picture } from '../elements/picture';
 import { SimpleLight } from '../elements/simple-light';
 import { getAllPictures } from '../creators/get-all-pictures';
 import { mockPhotoUrls } from '../api/mocks';
+import { getValueByLimit } from '../utils/get-value-by-limit';
 
 export class App extends React.Component {
     state = {
         mouseX: 0,
         mouseY: 0,
+        photos: [],
     };
     scene: THREE.Scene;
     camera: THREE.PerspectiveCamera;
@@ -32,38 +34,49 @@ export class App extends React.Component {
             mouseX: window.innerWidth / 2,
             mouseY: window.innerHeight / 2,
         });
-        const width = window.innerWidth;
-        const height = window.innerHeight;
+        const widthScreen = window.innerWidth;
+        const heightScreen = window.innerHeight;
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(
             75,
-            width / height,
+            widthScreen / heightScreen,
             0.1,
             1000,
         );
+        this.camera.lookAt(new THREE.Vector3(1.4, 0.3, -2));
         this.camera.position.z = 4;
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setClearColor('#000000');
-        this.renderer.setSize(width, height);
+        this.renderer.setSize(widthScreen, heightScreen);
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.BasicShadowMap;
         this.mount.appendChild(this.renderer.domElement);
         // elements
         this.well = new Wall().mesh;
         this.start();
         this.scene.add(this.well);
-        // getAllPictures().then((photoSizedInfo: any) => {
-        //     console.log(photoSizedInfo.map((tes: any) => tes.source));
-        //     photoSizedInfo.forEach((photoSizeInfo: any, index: number) => {
-        //         const picture = new Picture({ url: photoSizeInfo.source });
-        //         picture.mesh.position.set(index * 1.5, 0, 0);
-        //         this.scene.add(picture.mesh);
-        //     });
-        // });
-        mockPhotoUrls.forEach((url: string, index: number) => {
-            const picture = new Picture({ url });
-            picture.mesh.position.set(index * 1.5, 0, 0);
-            this.scene.add(picture.mesh);
+        getAllPictures().then((photoSizedInfo: any) => {
+            photoSizedInfo.forEach((photoSizeInfo: any, index: number) => {
+                const { source, width, height } = photoSizeInfo;
+                const picture = new Picture({
+                    url: source,
+                    width: width / 300,
+                    height: height / 300,
+                });
+                picture.mesh.position.set(index * 3.8, 0, 0);
+                this.setState({
+                    photos: photoSizedInfo,
+                });
+                this.scene.add(picture.mesh);
+            });
         });
+        // mockPhotoUrls.forEach((url: string, index: number) => {
+        //     const picture = new Picture({ url });
+        //     picture.mesh.position.set(index * 1.5, 0, 0);
+        //     this.scene.add(picture.mesh);
+        // });
         this.mainLight = new SimpleLight({ x: 0, y: 0 });
+        this.mainLight.light.position.set( 0, 0, 2 );
         this.scene.add(this.mainLight.light);
         window.addEventListener('resize', this.onResize);
     }
@@ -97,7 +110,7 @@ export class App extends React.Component {
         const {
             position: { z: lightZ },
         } = this.mainLight.light;
-        const { mouseX, mouseY } = this.state;
+        const { mouseX, mouseY, photos } = this.state;
         if (mouseX !== null && mouseY !== null) {
             const { offsetHeight: h, offsetWidth: w } = this.mount;
             const cH = h / 2;
@@ -106,8 +119,24 @@ export class App extends React.Component {
             const factorSpeedY = 1;
             const nextCameraX = x - ((cW - mouseX) / 10000) * factorSpeedX;
             const nextCameraY = y + ((cH - mouseY) / 10000) * factorSpeedY;
-            this.camera.position.set(nextCameraX, nextCameraY, z);
-            this.mainLight.light.position.set(nextCameraX, nextCameraY, lightZ);
+            const totalWidth = photos.reduce((acc, next: any) => {
+                const result = acc + next.width;
+                return result;
+            }, 0);
+            this.camera.position.set(
+                getValueByLimit({
+                    value: nextCameraX,
+                    min: -5,
+                    max: totalWidth,
+                }),
+                getValueByLimit({ value: nextCameraY, min: -3, max: 3 }),
+                z,
+            );
+            this.mainLight.light.position.set(
+                nextCameraX - 1,
+                nextCameraY - 1,
+                lightZ,
+            );
         }
     };
 
