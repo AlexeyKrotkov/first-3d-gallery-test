@@ -7,9 +7,13 @@
     "@types/node": "12.0.7",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
+    "dat.gui": "^0.7.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
+    "react-three": "^0.9.7",
+    "react-three-renderer": "^3.2.4",
+    "three": "^0.105.2",
     "typescript": "3.5.1"
   },
   "scripts": {
@@ -32,5 +36,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "node-sass": "^4.12.0",
+    "npm": "^6.9.0",
+    "prettier": "^1.17.0"
   }
 }

@@ -1,0 +1,59 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "airbnb",
+        "prettier",
+        "prettier/react",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {
+        "lines-between-class-members": 0,
+        "@typescript-eslint/explicit-member-accessibility": 0,
+        "react/no-array-index-key": 0,
+        "@typescript-eslint/explicit-function-return-type": 0,
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [".ts", ".tsx"]
+            }
+        ],
+        "react/sort-comp": 0,
+        "jsx-a11y/label-has-for": 0,
+        "jsx-a11y/label-has-associated-control": 0,
+        "import/prefer-default-export": 0,
+        "no-unused-vars": 0,
+        "react/prop-types": 0,
+        "no-underscore-dangle": 0,
+        "import/imports-first": ["error", "absolute-first"],
+        "import/newline-after-import": "error"
+    },
+    "globals": {
+        "window": true,
+        "document": true,
+        "localStorage": true,
+        "FormData": true,
+        "FileReader": true,
+        "Blob": true,
+        "navigator": true,
+        "requestAnimationFrame": true,
+        "cancelAnimationFrame": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+        },
+        "import/resolver": {
+            "node": {
+                "paths": ["src"],
+                "extensions": [".js", ".jsx", ".ts", ".tsx", "scss", ".jpg"]
+            }
+        }
+    }
+}
