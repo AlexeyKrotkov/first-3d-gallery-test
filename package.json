@@ -2,6 +2,7 @@
   "name": "three-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://alexeykrotkov.github.io/react-three/",
   "dependencies": {
     "@types/axios": "^0.14.0",
     "@types/jest": "24.0.13",
@@ -24,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
