@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/first-3d-gallery/static/css/main.6a424f64.chunk.css",
-    "main.js": "/first-3d-gallery/static/js/main.1667d87d.chunk.js",
-    "main.js.map": "/first-3d-gallery/static/js/main.1667d87d.chunk.js.map",
-    "runtime~main.js": "/first-3d-gallery/static/js/runtime~main.bf1137f2.js",
-    "runtime~main.js.map": "/first-3d-gallery/static/js/runtime~main.bf1137f2.js.map",
-    "static/js/2.18e0f6e8.chunk.js": "/first-3d-gallery/static/js/2.18e0f6e8.chunk.js",
-    "static/js/2.18e0f6e8.chunk.js.map": "/first-3d-gallery/static/js/2.18e0f6e8.chunk.js.map",
-    "index.html": "/first-3d-gallery/index.html",
-    "precache-manifest.f3158bcfb1bbf764510ece85aca31883.js": "/first-3d-gallery/precache-manifest.f3158bcfb1bbf764510ece85aca31883.js",
-    "service-worker.js": "/first-3d-gallery/service-worker.js",
-    "static/css/main.6a424f64.chunk.css.map": "/first-3d-gallery/static/css/main.6a424f64.chunk.css.map",
-    "static/media/wall-white.jpg": "/first-3d-gallery/static/media/wall-white.e7d5b8a3.jpg"
+    "main.css": "/first-3d-gallery-test/static/css/main.6a424f64.chunk.css",
+    "main.js": "/first-3d-gallery-test/static/js/main.1667d87d.chunk.js",
+    "main.js.map": "/first-3d-gallery-test/static/js/main.1667d87d.chunk.js.map",
+    "runtime~main.js": "/first-3d-gallery-test/static/js/runtime~main.d554fd20.js",
+    "runtime~main.js.map": "/first-3d-gallery-test/static/js/runtime~main.d554fd20.js.map",
+    "static/js/2.18e0f6e8.chunk.js": "/first-3d-gallery-test/static/js/2.18e0f6e8.chunk.js",
+    "static/js/2.18e0f6e8.chunk.js.map": "/first-3d-gallery-test/static/js/2.18e0f6e8.chunk.js.map",
+    "index.html": "/first-3d-gallery-test/index.html",
+    "precache-manifest.3d34863380022fc5ff1b4e27cab3746c.js": "/first-3d-gallery-test/precache-manifest.3d34863380022fc5ff1b4e27cab3746c.js",
+    "service-worker.js": "/first-3d-gallery-test/service-worker.js",
+    "static/css/main.6a424f64.chunk.css.map": "/first-3d-gallery-test/static/css/main.6a424f64.chunk.css.map",
+    "static/media/wall-white.jpg": "/first-3d-gallery-test/static/media/wall-white.e7d5b8a3.jpg"
   }
 }
