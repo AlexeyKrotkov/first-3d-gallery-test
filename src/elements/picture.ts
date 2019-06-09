@@ -3,15 +3,9 @@ import { textureLoader } from '../utils/texture-loader';
 
 interface PictureProps {
     url: string;
-    width?: number;
-    height?: number;
+    width: number;
+    height: number;
 }
-
-export const getTrueProportions = ({ width, height }: any) => {
-    if (width > height) return height / width;
-    return width / height;
-};
-
 
 export class Picture {
     texture: THREE.Texture;
@@ -21,8 +15,8 @@ export class Picture {
     constructor({ url, width, height }: PictureProps) {
         const texture = textureLoader.load(url);
         this.geometry = new THREE.BoxGeometry(
-            width || 2,
-            height || 2 * getTrueProportions({ height, width }),
+            width,
+            height,
             1,
         );
         this.material = new THREE.MeshPhongMaterial({

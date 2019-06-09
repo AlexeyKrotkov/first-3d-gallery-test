@@ -11,7 +11,7 @@ export class App extends React.Component {
     state = {
         mouseX: 0,
         mouseY: 0,
-        photos: [],
+        totalShift: 0,
     };
     scene: THREE.Scene;
     camera: THREE.PerspectiveCamera;
@@ -44,7 +44,7 @@ export class App extends React.Component {
             1000,
         );
         this.camera.lookAt(new THREE.Vector3(1.4, 0.3, -2));
-        this.camera.position.z = 4;
+        this.camera.position.z = 4.5;
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setClearColor('#000000');
         this.renderer.setSize(widthScreen, heightScreen);
@@ -56,16 +56,22 @@ export class App extends React.Component {
         this.start();
         this.scene.add(this.well);
         getAllPictures().then((photoSizedInfo: any) => {
-            photoSizedInfo.forEach((photoSizeInfo: any, index: number) => {
+            let shift = 0;
+            photoSizedInfo.forEach((photoSizeInfo: any) => {
+                console.log(photoSizeInfo);
                 const { source, width, height } = photoSizeInfo;
+                const imageWidth = width * (width > height ? width / height : 1) / 300;
+                const imageHeight =
+                    height * (width <= height ? width / height : 1) / 300;
                 const picture = new Picture({
                     url: source,
-                    width: width / 300,
-                    height: height / 300,
+                    width: imageWidth,
+                    height: imageHeight,
                 });
-                picture.mesh.position.set(index * 3.8, 0, 0);
+                picture.mesh.position.set(shift, 0, 0);
+                shift += 3.8;
                 this.setState({
-                    photos: photoSizedInfo,
+                    totalShift: shift,
                 });
                 this.scene.add(picture.mesh);
             });
@@ -76,7 +82,7 @@ export class App extends React.Component {
         //     this.scene.add(picture.mesh);
         // });
         this.mainLight = new SimpleLight({ x: 0, y: 0 });
-        this.mainLight.light.position.set( 0, 0, 2 );
+        this.mainLight.light.position.set(0, 0, 2);
         this.scene.add(this.mainLight.light);
         window.addEventListener('resize', this.onResize);
     }
@@ -110,7 +116,7 @@ export class App extends React.Component {
         const {
             position: { z: lightZ },
         } = this.mainLight.light;
-        const { mouseX, mouseY, photos } = this.state;
+        const { mouseX, mouseY, totalShift } = this.state;
         if (mouseX !== null && mouseY !== null) {
             const { offsetHeight: h, offsetWidth: w } = this.mount;
             const cH = h / 2;
@@ -119,15 +125,11 @@ export class App extends React.Component {
             const factorSpeedY = 1;
             const nextCameraX = x - ((cW - mouseX) / 10000) * factorSpeedX;
             const nextCameraY = y + ((cH - mouseY) / 10000) * factorSpeedY;
-            const totalWidth = photos.reduce((acc, next: any) => {
-                const result = acc + next.width;
-                return result;
-            }, 0);
             this.camera.position.set(
                 getValueByLimit({
                     value: nextCameraX,
                     min: -5,
-                    max: totalWidth,
+                    max: totalShift,
                 }),
                 getValueByLimit({ value: nextCameraY, min: -3, max: 3 }),
                 z,

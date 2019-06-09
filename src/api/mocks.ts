@@ -50,3 +50,5 @@ export const mockPhotoUrls = [
     'https://live.staticflickr.com/65535/33774530598_69a4502511.jpg',
     'https://live.staticflickr.com/65535/33774529798_99eaf76b66.jpg',
 ];
+
+export const mockPhotosSizes = []
