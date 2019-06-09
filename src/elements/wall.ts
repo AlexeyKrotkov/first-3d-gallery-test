@@ -12,7 +12,7 @@ export class Wall {
         texture.wrapT = THREE.RepeatWrapping;
         texture.repeat.set( 20, 20 );
         this.geometry = new THREE.PlaneGeometry(50, 50, 10, 10);
-        this.material = new THREE.MeshBasicMaterial({
+        this.material = new THREE.MeshPhongMaterial({
             map: texture,
         });
         this.mesh = new THREE.Mesh(this.geometry, this.material);

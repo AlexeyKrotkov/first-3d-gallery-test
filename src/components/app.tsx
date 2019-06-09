@@ -2,6 +2,9 @@ import * as React from 'react';
 import * as THREE from 'three';
 import { Wall } from '../elements/wall';
 import { Picture } from '../elements/picture';
+import { SimpleLight } from '../elements/simple-light';
+import { getAllPictures } from '../creators/get-all-pictures';
+import { mockPhotoUrls } from '../api/mocks';
 
 export class App extends React.Component {
     state = {
@@ -11,6 +14,7 @@ export class App extends React.Component {
     scene: THREE.Scene;
     camera: THREE.PerspectiveCamera;
     renderer: THREE.WebGLRenderer;
+    mainLight: SimpleLight;
     mount: any;
     well: THREE.Mesh;
     frameId: any;
@@ -24,6 +28,10 @@ export class App extends React.Component {
     };
 
     componentDidMount() {
+        this.setState({
+            mouseX: window.innerWidth / 2,
+            mouseY: window.innerHeight / 2,
+        });
         const width = window.innerWidth;
         const height = window.innerHeight;
         this.scene = new THREE.Scene();
@@ -42,7 +50,21 @@ export class App extends React.Component {
         this.well = new Wall().mesh;
         this.start();
         this.scene.add(this.well);
-        this.scene.add(new Picture().mesh);
+        // getAllPictures().then((photoSizedInfo: any) => {
+        //     console.log(photoSizedInfo.map((tes: any) => tes.source));
+        //     photoSizedInfo.forEach((photoSizeInfo: any, index: number) => {
+        //         const picture = new Picture({ url: photoSizeInfo.source });
+        //         picture.mesh.position.set(index * 1.5, 0, 0);
+        //         this.scene.add(picture.mesh);
+        //     });
+        // });
+        mockPhotoUrls.forEach((url: string, index: number) => {
+            const picture = new Picture({ url });
+            picture.mesh.position.set(index * 1.5, 0, 0);
+            this.scene.add(picture.mesh);
+        });
+        this.mainLight = new SimpleLight({ x: 0, y: 0 });
+        this.scene.add(this.mainLight.light);
         window.addEventListener('resize', this.onResize);
     }
 
@@ -63,22 +85,30 @@ export class App extends React.Component {
     };
 
     animate = () => {
+        this.onCameraMove();
+        this.renderScene();
+        this.frameId = window.requestAnimationFrame(this.animate);
+    };
+
+    onCameraMove = () => {
         const {
             position: { x, y, z },
         } = this.camera;
+        const {
+            position: { z: lightZ },
+        } = this.mainLight.light;
         const { mouseX, mouseY } = this.state;
-        const { offsetHeight: h, offsetWidth: w } = this.mount;
-        const cH = h / 2;
-        const cW = w / 2;
-        const factorSpeedX = 1;
-        const factorSpeedY = 1;
-        this.camera.position.set(
-            x - ((cW - mouseX) / 10000) * factorSpeedX,
-            y + ((cH - mouseY) / 10000) * factorSpeedY,
-            z,
-        );
-        this.renderScene();
-        this.frameId = window.requestAnimationFrame(this.animate);
+        if (mouseX !== null && mouseY !== null) {
+            const { offsetHeight: h, offsetWidth: w } = this.mount;
+            const cH = h / 2;
+            const cW = w / 2;
+            const factorSpeedX = 1;
+            const factorSpeedY = 1;
+            const nextCameraX = x - ((cW - mouseX) / 10000) * factorSpeedX;
+            const nextCameraY = y + ((cH - mouseY) / 10000) * factorSpeedY;
+            this.camera.position.set(nextCameraX, nextCameraY, z);
+            this.mainLight.light.position.set(nextCameraX, nextCameraY, lightZ);
+        }
     };
 
     renderScene = () => {
