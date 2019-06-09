@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/three-react/static/css/main.6a424f64.chunk.css",
-    "main.js": "/three-react/static/js/main.1667d87d.chunk.js",
-    "main.js.map": "/three-react/static/js/main.1667d87d.chunk.js.map",
-    "runtime~main.js": "/three-react/static/js/runtime~main.549dd70b.js",
-    "runtime~main.js.map": "/three-react/static/js/runtime~main.549dd70b.js.map",
-    "static/js/2.18e0f6e8.chunk.js": "/three-react/static/js/2.18e0f6e8.chunk.js",
-    "static/js/2.18e0f6e8.chunk.js.map": "/three-react/static/js/2.18e0f6e8.chunk.js.map",
-    "index.html": "/three-react/index.html",
-    "precache-manifest.e6172d07873e6da2feac9a886e12699e.js": "/three-react/precache-manifest.e6172d07873e6da2feac9a886e12699e.js",
-    "service-worker.js": "/three-react/service-worker.js",
-    "static/css/main.6a424f64.chunk.css.map": "/three-react/static/css/main.6a424f64.chunk.css.map",
-    "static/media/wall-white.jpg": "/three-react/static/media/wall-white.e7d5b8a3.jpg"
+    "main.css": "/first-3d-gallery/static/css/main.6a424f64.chunk.css",
+    "main.js": "/first-3d-gallery/static/js/main.1667d87d.chunk.js",
+    "main.js.map": "/first-3d-gallery/static/js/main.1667d87d.chunk.js.map",
+    "runtime~main.js": "/first-3d-gallery/static/js/runtime~main.bf1137f2.js",
+    "runtime~main.js.map": "/first-3d-gallery/static/js/runtime~main.bf1137f2.js.map",
+    "static/js/2.18e0f6e8.chunk.js": "/first-3d-gallery/static/js/2.18e0f6e8.chunk.js",
+    "static/js/2.18e0f6e8.chunk.js.map": "/first-3d-gallery/static/js/2.18e0f6e8.chunk.js.map",
+    "index.html": "/first-3d-gallery/index.html",
+    "precache-manifest.f3158bcfb1bbf764510ece85aca31883.js": "/first-3d-gallery/precache-manifest.f3158bcfb1bbf764510ece85aca31883.js",
+    "service-worker.js": "/first-3d-gallery/service-worker.js",
+    "static/css/main.6a424f64.chunk.css.map": "/first-3d-gallery/static/css/main.6a424f64.chunk.css.map",
+    "static/media/wall-white.jpg": "/first-3d-gallery/static/media/wall-white.e7d5b8a3.jpg"
   }
 }
