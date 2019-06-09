@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-three/static/css/main.6a424f64.chunk.css",
-    "main.js": "/react-three/static/js/main.0a5cedf9.chunk.js",
-    "main.js.map": "/react-three/static/js/main.0a5cedf9.chunk.js.map",
-    "runtime~main.js": "/react-three/static/js/runtime~main.cf5e5637.js",
-    "runtime~main.js.map": "/react-three/static/js/runtime~main.cf5e5637.js.map",
-    "static/js/2.18e0f6e8.chunk.js": "/react-three/static/js/2.18e0f6e8.chunk.js",
-    "static/js/2.18e0f6e8.chunk.js.map": "/react-three/static/js/2.18e0f6e8.chunk.js.map",
-    "index.html": "/react-three/index.html",
-    "precache-manifest.00c480d7454f56d3f4b7694869643903.js": "/react-three/precache-manifest.00c480d7454f56d3f4b7694869643903.js",
-    "service-worker.js": "/react-three/service-worker.js",
-    "static/css/main.6a424f64.chunk.css.map": "/react-three/static/css/main.6a424f64.chunk.css.map",
-    "static/media/wall-white.jpg": "/react-three/static/media/wall-white.e7d5b8a3.jpg"
+    "main.css": "/three-react/static/css/main.6a424f64.chunk.css",
+    "main.js": "/three-react/static/js/main.0a5cedf9.chunk.js",
+    "main.js.map": "/three-react/static/js/main.0a5cedf9.chunk.js.map",
+    "runtime~main.js": "/three-react/static/js/runtime~main.549dd70b.js",
+    "runtime~main.js.map": "/three-react/static/js/runtime~main.549dd70b.js.map",
+    "static/js/2.18e0f6e8.chunk.js": "/three-react/static/js/2.18e0f6e8.chunk.js",
+    "static/js/2.18e0f6e8.chunk.js.map": "/three-react/static/js/2.18e0f6e8.chunk.js.map",
+    "index.html": "/three-react/index.html",
+    "precache-manifest.fba89b94ee83f5ca0a885736ee2eeb8e.js": "/three-react/precache-manifest.fba89b94ee83f5ca0a885736ee2eeb8e.js",
+    "service-worker.js": "/three-react/service-worker.js",
+    "static/css/main.6a424f64.chunk.css.map": "/three-react/static/css/main.6a424f64.chunk.css.map",
+    "static/media/wall-white.jpg": "/three-react/static/media/wall-white.e7d5b8a3.jpg"
   }
 }
