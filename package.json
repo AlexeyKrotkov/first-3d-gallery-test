@@ -2,7 +2,7 @@
   "name": "three-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alexeykrotkov.github.io/first-3d-gallery",
+  "homepage": "https://alexeykrotkov.github.io/first-3d-gallery-test",
   "dependencies": {
     "@types/axios": "^0.14.0",
     "@types/jest": "24.0.13",
